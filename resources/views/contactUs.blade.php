@@ -51,8 +51,6 @@
 @endif
 
 @auth
-    <h1 class="text-center text-success " style="margin-top: 5rem">OR</h1>
-
     <div class=" col-md-9">
         <h2 class="text-info " style="margin-bottom: 2rem">Send message</h2>
         <form class="contact100-form validate-form" method="POST" action="{{url('/createmessage')}}">

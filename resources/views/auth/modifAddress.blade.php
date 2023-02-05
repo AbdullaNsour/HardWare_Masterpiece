@@ -3,7 +3,7 @@
 Modify your address
 @endsection
 @section('body')
-
+{{--  add adress --}}
 <div class="col-sm-9 padding-right ">
     @include('errorrs')
 

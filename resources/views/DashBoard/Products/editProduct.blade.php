@@ -45,8 +45,12 @@
         <div class="my-5">
             @include('errorrs')
         </div>
-        <div class="table-title ">
+        <div class="table-title d-flex justify-content-between ">
+            {{-- here --}}
             <h2 class="text-light ">Edit <b>Product : {{ $product->name }}</b></h2>
+            <a href="{{ url('/admin/filterproducts?keyword=&brand=All&cat=All') }}">
+                <span class="btn btn-success">Back</span>
+            </a>
         </div>
         <div class="my-5">
             <form action="{{ url("/admin/editproduct/$product->id") }}" method="post" enctype="multipart/form-data">
@@ -91,7 +95,7 @@
                     <input type="checkbox" name="stock" @if ($product->stock == 'in Stock') checked @endif>
                 </div>
                 <label class="h4 form-label my-3">Product Image:</label><br>
-                <img style="width: 15rem; height: 15rem; margin-bottom: 2rem" src="{{ asset("uploads/$product->img") }}"
+                <img style="width: 15rem; height: auto; margin-bottom: 2rem" src="{{ asset("uploads/$product->img") }}"
                     alt="">
                 <input type="file" name="image" class="form-control">
 

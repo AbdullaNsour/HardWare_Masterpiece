@@ -243,26 +243,24 @@
             border-top-right-radius: 0.2rem;
             border-bottom-right-radius: 0.2rem;
         }
-
     </style>
 @endsection
 @section('body')
     <div class="container">
-        <div class="my-5">
+        <div class="">
             @include('errorrs')
         </div>
-        <div class="table-title ">
+        <div class="table-title d-flex justify-content-between  ">
             <h2 class="text-light ">All <b>Products</b></h2>
-        </div>
-        <div class="text-center">
-            <h3 class="my-3">Filter By:</h3>
-            <form action="{{ url('/admin/filterproducts') }}" method="get">
-                <input hidden type="text" name="keyword" @if (isset($keyword)) value="{{ $keyword }}" @endif>
+
+            <form action="{{ url('/admin/filterproducts') }}" method="get" class="d-flex justify-content-between ">
+                <input hidden type="text" name="keyword"
+                    @if (isset($keyword)) value="{{ $keyword }}" @endif>
 
                 <div class="row">
-                    <label class="form-label col-sm-2">Brand: </label>
+                    <label class="form-label col-2">Brand: </label>
                     <div class="col-sm-4">
-                        <select class="form-select mb-3 " name="brand">
+                        <select class="form-select  " name="brand" aria-placeholder="Brand">
                             @if (isset($sbrand))
                                 <option selected="" value="{{ $sbrand }}">{{ $sbrand }}</option>
                                 @if ($sbrand != 'All')
@@ -281,9 +279,9 @@
                             @endif
                         </select>
                     </div>
-                    <label class="form-label col-sm-2">Category: </label>
+                    <label class="form-label col-2">Category: </label>
                     <div class="col-sm-4">
-                        <select class="form-select mb-3 " name="cat">
+                        <select class="form-select " name="cat">
                             @if (isset($scat))
                                 <option selected="">{{ $scat }}</option>
                                 @if ($scat != 'All')
@@ -303,17 +301,29 @@
                         </select>
                     </div>
                 </div>
-                <input type="submit" value="Filter" class="btn btn-secondary">
+                <input type="submit" value="Filter" class="btn btn-secondary " style="max-height: 40px ; margin-left: 25px">
             </form>
 
 
-            <h3 class="my-3">Search:</h3>
-            <form class="d-flex justify-content-center" action="{{ url('/admin/searchproducts') }}" method="get">
-                <input hidden type="text" name="brand" @if (isset($sbrand)) value="{{ $sbrand }}" @endif>
-                <input hidden type="text" name="cat" @if (isset($scat)) value="{{ $scat }}" @endif>
+            <a class="btn btn-success " style="max-height: 40px" href="{{ url('/admin/addproduct') }}">
+                <span class="align-middle" > <b>Add product</b> </span>
+            </a>
 
-                <input class="form-control w-50 mx-3" type="text" name="keyword" @if (isset($keyword)) value="{{ $keyword }}" @endif
-                    placeholder="Search keyword">
+        </div>
+
+        {{-- table --}}
+
+
+        <div class="text-center">
+            {{-- <h3 class="my-3">Search:</h3> --}}
+            <form class="d-flex justify-content-center mt-4 mb-3" action="{{ url('/admin/searchproducts') }}" method="get">
+                <input hidden type="text" name="brand"
+                    @if (isset($sbrand)) value="{{ $sbrand }}" @endif>
+                <input hidden type="text" name="cat"
+                    @if (isset($scat)) value="{{ $scat }}" @endif>
+
+                <input class="form-control w-50 mx-3" type="text" name="keyword"
+                    @if (isset($keyword)) value="{{ $keyword }}" @endif placeholder="Search keyword">
                 <input type="submit" class="btn btn-success mx-3" value="Search">
             </form>
 
@@ -321,47 +331,56 @@
 
 
         </div>
-        <div class="row d-flex justify-content-between my-5">
-            @foreach ($products as $product)
-                <div class="col-sm-3">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center" style="height: 30rem">
-                                <div style="height: 20rem">
-                                    <img style="width: 100%; height: 10rem; margin-bottom: 1rem;"
-                                        src="{{ asset("uploads/$product->img") }}" alt="" />
-                                    <h2 style="height: 2rem"
-                                        class="position-relative d-flex align-items-center justify-content-center">
-                                        @if ($product->sale_price != null)
-                                            <p class="text-danger" style="height: 2rem;font-size: 2rem">
-                                                <del>{{ $product->price }} JD</del>
-                                            </p>
-                                            <h2 style="height: 2rem">{{ number_format($product->sale_price ,2) }} JD</h2>
-                                        @else
-                                            <h2 style="height: 2rem">{{ number_format($product->price ,2) }} JD</h2>
-                                        @endif
-                                    </h2>
-                                    <h5 class="overflow-hidden" style="height: 2rem">{{ $product->name }}</h5>
-                                </div>
-                                <a href="{{ url("/admin/editproduct/$product->id") }}" class="btn btn-info"><i
-                                        class="fas fa-edit"></i> Edit Product</a>
-                                <a href="{{ url("/admin/deleteproduct/$product->id") }}" class="btn btn-danger my-3"><i
-                                        class="fas fa-trash-alt"></i> Delete Product</a>
-                            </div>
-                            @if ($product->sale_price != null)
-                                <img src="{{ asset('images/home/sale.png') }}" class="new" alt="" />
-                            @endif
-                            @if ($product->stock != 'in Stock')
-                                <img src="{{ asset('images/home/out-of-stock.png') }}" class="outStock" alt="" />
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Old Price</th>
+                    <th>NewPrice</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                    <tr>
+                        <td><a href="{{ url("/admin/editproduct/$product->id") }}">
+                            <img style="border-radius: 50%; width: 60px; height:60px;"
+                                src="{{ asset("uploads/$product->img") }}" alt="" /></td>
+                            </a>
+                        <td>
+                            <h5>{{ $product->name }}</h5>
+                        </td>
+                        <td>
+                            <h4>
+                                @if ($product->sale_price != null)
+                                    <p class="text-danger">
+                                        <del>{{ $product->price }} JD</del>
+                                    </p>
+                            </h4>
+                        </td>
+                        <td>
+                            <h4>{{ number_format($product->sale_price, 2) }} JD</h4>
+                        @else
+                            <h4>{{ number_format($product->price, 2) }} JD</h4>
+                            <h4>{{ number_format($product->price, 2) }} JD</h4>
+                        </td>
+                @endif
+                <td>
+                    <a href="{{ url("/admin/editproduct/$product->id") }}" class="btn btn-info"><i class="fas fa-edit"></i>
+                        Edit</a>
+                    <a href="{{ url("/admin/deleteproduct/$product->id") }}" class="btn btn-danger my-3"><i
+                            class="fas fa-trash-alt"></i> Delete</a>
+                </td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
     </div>
 @endsection
 @section('pagintation')
     <div class="text-center">{{ $products->links() }}</div>
-
 @endsection

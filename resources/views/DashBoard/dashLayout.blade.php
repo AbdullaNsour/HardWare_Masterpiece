@@ -17,6 +17,8 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    
 </head>
 
 <body>
@@ -34,6 +36,7 @@
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/93e5704d99.js" crossorigin="anonymous"></script>
+    
 
     @yield('js')
 

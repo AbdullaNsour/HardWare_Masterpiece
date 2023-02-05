@@ -58,7 +58,7 @@
         <div class="row">
             @foreach ($messages as $message)
                 <div class="col-sm-4">
-                    <div class="card overflow-auto rounded shadow-lg with-3d-shadow" style="height: 15rem;">
+                    <div class="card overflow-auto rounded shadow-lg with-3d-shadow" style="height: auto;">
                         <a href="{{ url("/admin/deletemessage/$message->id") }}" class="close"></a>
 
                         <div class="card-header">

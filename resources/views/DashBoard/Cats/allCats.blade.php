@@ -7,9 +7,6 @@
 @endsection
 @section('css')
     <style>
-        .table-responsive {
-            margin: 30px 0;
-        }
 
         .table-wrapper {
             min-width: 1000px;
@@ -145,7 +142,7 @@
 @endsection
 @section('body')
     <div class="container">
-        <div class="my-5">
+        <div >
             @include('errorrs')
         </div>
 

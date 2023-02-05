@@ -1,3 +1,9 @@
+
+{{-- All Products task:
+    1- add (add products button)
+    2- change style
+     --}}
+
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ url('/admin/pindingorders') }}">
@@ -28,7 +34,8 @@
                     <i class="fas fa-undo"></i> <span class="align-middle">Return
                         requests</span>
                 </a>
-            </li>
+            </li> 
+            
             @if ($user->role=='admin'||$user->role=='super_admin')
                 <li class="sidebar-item @yield('addproduct')">
                     <a class="sidebar-link" href="{{ url('/admin/addproduct') }}">
@@ -36,9 +43,12 @@
                     </a>
                 </li>
                 <li class="sidebar-item @yield('allproducts')">
-                    <a class="sidebar-link" href="{{ url('/admin/allproducts') }}">
+                    <a class="sidebar-link" href="{{ url('/admin/filterproducts?keyword=&brand=All&cat=All') }}">
                         <i class="fas fa-desktop"></i> <span class="align-middle">All products</span>
                     </a>
+                    {{-- <a class="sidebar-link" href="{{ url('/admin/allproducts') }}">
+                        <i class="fas fa-desktop"></i> <span class="align-middle">All products</span>
+                    </a> --}}
                 </li>
 
                 <li class="sidebar-item @yield('cat')">

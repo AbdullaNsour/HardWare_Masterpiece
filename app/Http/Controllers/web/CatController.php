@@ -28,6 +28,10 @@ class CatController extends Controller
             'cats' => $cats
         ]);
     }
+    
+
+
+    
     public function add(Request $request)
     {
         $request->validate([

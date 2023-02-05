@@ -11,7 +11,7 @@
                 <div class="single-products">
                         <div class="productinfo text-center"  style="height: 40rem">
                             <a href="{{url("/products/show/$product->id")}}"  style="height: 35rem">
-                                <img style="width: 100%; height: 15rem;" src="{{asset("uploads/$product->img")}}" alt="" />
+                                <img style="width: 100%; height: auto;" src="{{asset("uploads/$product->img")}}" alt="" />
                                 <h2 style="height: 5rem" class="position-relative d-flex align-items-center justify-content-center">
                                 @if ($product->sale_price!=null)
                                 <p class="text-danger" style="height: 2rem;font-size: 2rem"><del>{{$product->price}} JD</del></p>

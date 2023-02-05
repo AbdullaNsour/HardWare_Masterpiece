@@ -3,39 +3,46 @@
     Cart
 @endsection
 @section('body')
+
+
+
+
+
+
+
     <div class="col-sm-9 padding-right ">
         @if (count($products)>0)
         <section id="cart_items ">
-            <div class="container col-sm-12">
+            <div class="containers col-sm-12">
                 <div class="breadcrumbs">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb d-flex justify-content-between">
                         <li><a href="#">Home</a></li>
                         <li class="active">Shopping Cart</li>
+                        <a href="{{url("/clearcart")}}"><button class="btn btn-danger ">Clear cart?</button></a>
                     </ol>
                 </div>
-                <a href="{{url("/clearcart")}}"><button class="btn btn-danger">Clear cart?</button></a>
 
-                <div class="table-responsive cart_info">
+                <div class=" cart_info">
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="image">Item</td>
-                                <td class="description"></td>
-                                <td class="price">Price</td>
-                                <td class="quantity">Count</td>
-                                <td class="total">Add/Remove</td>
-                                <td></td>
+                                <th class="image">Item</th>
+                                <th class="">Name</th>
+                                <th class="price">Price</th>
+                                <th class="quantity">Count</th>
+                                <th class="total">Add/Remove</th>
+                                {{-- <th></th> --}}
                             </tr>
                         </thead>
                         <tbody>
                                 @foreach ($products as $product)
                                     <tr >
-                                        <td class="cart_product ">
+                                        <td class="cart_product " style="padding-right: 25px">
                                             <a href="{{ url("/products/show/$product->id") }}"><img
                                                     style="width: 8rem; height: 8rem;"
                                                     src="{{ asset("uploads/$product->img") }}" alt=""></a>
                                         </td>
-                                        <td class="cart_description">
+                                        <td class="cart_name">
                                             <h4><a href="{{ url("/products/show/$product->id") }}">{{ $product->name }}</a>
                                             </h4>
                                             <p>{{ $product->model }}</p>
@@ -63,7 +70,7 @@
         </section>
         <!--/#cart_items-->
         <section id="do_action">
-            <div class="container col-sm-12">
+            <div class="containers col-sm-12">
                 <div class="row">
 
                     <div class="col-sm-12">

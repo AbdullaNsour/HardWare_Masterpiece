@@ -170,7 +170,7 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required|string|max:255',
             'model'=>'nullable|string|max:255',
-            'discreption'=>'nullable|string|max:255',
+            'discreption'=>'nullable|string',
             'price'=>'required|numeric|max:999999.99',
             'sale_price'=>'nullable|numeric|max:999999.99',
             'brand'=>'required|numeric',
@@ -184,6 +184,8 @@ class ProductController extends Controller
             $stock='out of stock';
 
         }
+
+        
         $imgPath=Storage::disk('uploads')->put("products",$request->image);
         Product::create([
             'name'=>$request->name,
@@ -215,7 +217,7 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required|string|max:255',
             'model'=>'nullable|string|max:255',
-            'discreption'=>'nullable|string|max:255',
+            'discreption'=>'nullable|string',
             'price'=>'required|numeric|max:999999.99',
             'sale_price'=>'nullable|numeric|max:999999.99',
             'brand'=>'required|numeric',

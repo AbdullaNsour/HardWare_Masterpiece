@@ -3,6 +3,14 @@
     {{ $product->name }}
 @endsection
 @section('body')
+
+<style>
+    .product-image-wrapper{
+        /* background-color: blue; */
+        height: 70vh; 
+        
+    }
+</style>
     <div class="col-sm-9 padding-right">
         <div class="product-details">
             <!--product-details-->
@@ -47,10 +55,10 @@
         <!--/product-details-->
         @if ($product->discreption != null)
             <h2 class="title text-center">Product details</h2>
-            <div class="container">
-                <h6>
+            <div  class="recommended_items">
+                <h4 class="col-sm-10" >
                     {{ $product->discreption }}
-                </h6>
+                </h4>
             </div>
         @endif
         <div style="height: 40rem" class="recommended_items">
@@ -61,20 +69,20 @@
                     <div class="item active">
                         @if ($productsBrandCount > 2)
                             @for ($i = 0; $i < 3; $i++)
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products" style="height: 30rem;max-height: 30rem">
+                                <div class="col-sm-4" >
+                                    <div class="product-image-wrapper " >
+                                        <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $brandProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $brandProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($brandProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($brandProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
+                                                            <h2 >
                                                                 {{ number_format($brandProducts[$i]->sale_price ,2) }}</h2>
                                                         @else
                                                             <h2 style="height: 6rem;max-height: 6rem">
@@ -101,19 +109,19 @@
                                         <div class="single-products" style="height: 30rem;max-height: 30rem">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $brandProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $brandProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($brandProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($brandProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
-                                                                {{ number_format($brandProducts[$i]->sale_price ,2) }}</h2>
+                                                            <h4 >
+                                                                {{ number_format($brandProducts[$i]->sale_price ,2) }}</h4>
                                                         @else
-                                                            <h2 style="height: 6rem;max-height: 6rem">
-                                                                {{ number_format($brandProducts[$i]->price ,2) }}</h2>
+                                                            <h4 style="height: 6rem;max-height: 6rem">
+                                                                {{ number_format($brandProducts[$i]->price ,2) }}</h4>
                                                         @endif
                                                     </div>
                                                     <p>{{ $brandProducts[$i]->name }}</p>
@@ -139,19 +147,19 @@
                                         <div class="single-products" style="height: 30rem;max-height: 30rem">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $brandProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $brandProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($brandProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($brandProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
-                                                                {{ number_format($brandProducts[$i]->sale_price ,2) }}</h2>
+                                                            <h4 >
+                                                                {{ number_format($brandProducts[$i]->sale_price ,2) }}</h4>
                                                         @else
-                                                            <h2 style="height: 6rem;max-height: 6rem">
-                                                                {{ number_format($brandProducts[$i]->price ,2) }}</h2>
+                                                            <h4 style="height: 6rem;max-height: 6rem">
+                                                                {{ number_format($brandProducts[$i]->price ,2) }}</h4>
                                                         @endif
                                                     </div>
                                                     <p>{{ $brandProducts[$i]->name }}</p>
@@ -189,23 +197,23 @@
                         @if ($productsCatCount > 2)
                             @for ($i = 0; $i < 3; $i++)
                                 <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
+                                    <div class="product-image-wrapper" style="height: 55vh">
                                         <div class="single-products" style="height: 30rem;max-height: 30rem">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $catProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $catProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($catProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($catProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
+                                                            <h2 >
                                                                 {{ number_format($catProducts[$i]->sale_price ,2) }}</h2>
                                                         @else
-                                                            <h2 style="height: 6rem;max-height: 6rem">
-                                                                {{ number_format($catProducts[$i]->price ,2) }}</h2>
+                                                            <h4 style="height: 6rem;max-height: 6rem">
+                                                                {{ number_format($catProducts[$i]->price ,2) }}</h4>
                                                         @endif
                                                     </div>
                                                     <p>{{ $catProducts[$i]->name }}</p>
@@ -228,19 +236,19 @@
                                         <div class="single-products" style="height: 30rem;max-height: 30rem">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $catProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $catProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($catProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($catProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
-                                                                {{ number_format($catProducts[$i]->sale_price ,2) }}</h2>
+                                                            <h4 >
+                                                                {{ number_format($catProducts[$i]->sale_price ,2) }}</h4>
                                                         @else
-                                                            <h2 style="height: 6rem;max-height: 6rem">
-                                                                {{ number_format($catProducts[$i]->price ,2) }}</h2>
+                                                            <h4 style="height: 6rem;max-height: 6rem">
+                                                                {{ number_format($catProducts[$i]->price ,2) }}</h4>
                                                         @endif
                                                     </div>
                                                     <p>{{ $catProducts[$i]->name }}</p>
@@ -266,19 +274,19 @@
                                         <div class="single-products" style="height: 30rem;max-height: 30rem">
                                             <div class="productinfo text-center">
                                                 <a href="{{ url('/products/show/' . $catProducts[$i]->id) }}">
-                                                    <img style="height: 15rem; width: 100%"
+                                                    <img style="height: 25vh; width: 55%"
                                                         src="{{ asset('uploads/' . $catProducts[$i]->img) }}" alt="" />
-                                                    <div style="height: 8rem;max-height: 8rem">
+                                                    <div >
                                                         @if ($catProducts[$i]->sale_price != null)
-                                                            <h5 style="height: 3rem;max-height: 2rem" class="text-danger">
+                                                            <h5 class="text-danger">
                                                                 <del>{{ number_format($catProducts[$i]->price ,2) }}
                                                                     JD</del>
                                                             </h5>
-                                                            <h2 style="height: 3rem;max-height: 4rem">
-                                                                {{ number_format($catProducts[$i]->sale_price ,2) }}</h2>
+                                                            <h4 >
+                                                                {{ number_format($catProducts[$i]->sale_price ,2) }}</h4>
                                                         @else
-                                                            <h2 style="height: 6rem;max-height: 6rem">
-                                                                {{ number_format($catProducts[$i]->price ,2) }}</h2>
+                                                            <h4 style="height: 6rem;max-height: 6rem">
+                                                                {{ number_format($catProducts[$i]->price ,2) }}</h4>
                                                         @endif
                                                     </div>
                                                     <p>{{ $catProducts[$i]->name }}</p>

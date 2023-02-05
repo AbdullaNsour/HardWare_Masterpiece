@@ -9,9 +9,7 @@
         @yield('title')
     </title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
     <link href="{{ asset('css/price-range.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
@@ -34,7 +32,7 @@
 
     @yield('slider')
 	<section>
-		<div class="container">
+		<div class="containers">
 			<div class="row">
 				<x-side-bar></x-side-bar>
                 @yield('body')
@@ -52,6 +50,8 @@
 	<script src="{{ asset('js/price-range.js') }}"></script>
     <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    {{-- <script src="{{ asset('js/nsour.js') }}"></script> --}}
+    
     <script src="https://kit.fontawesome.com/93e5704d99.js" crossorigin="anonymous"></script>
     <script>
         $('#logout-link').click(function(e){

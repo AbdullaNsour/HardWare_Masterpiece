@@ -37,18 +37,35 @@
         .alert-danger .alert-link {
             color: #6a1a21;
         }
-
     </style>
 @endsection
 @section('body')
     <div class="container">
-        <div class="my-5">
+        <div>
             @include('errorrs')
         </div>
-        <div class="table-title ">
+        <div class="table-title d-flex justify-content-between">
             <h2 class="text-light ">Add <b>Product</b></h2>
+            <div class="d-flex justify-content-center  ">
+                <form class="  d-flex justify-content-between" method="POST" action="{{ url('/admin/addbrand') }}">
+                    @csrf
+                    <input class="form-control w-50" type="text" name="name" placeholder="Brand name">
+                    <input class="btn btn-success w-25" style="margin-right: 50px" type="submit" value="Add">
+                </form>
+                <form class=" d-flex justify-content-between" method="POST" action="{{ url('/admin/addcat') }}">
+                    @csrf
+                    <input class="form-control w-50" type="text" name="name" placeholder="Category name">
+                    <input class="btn btn-success w-25" type="submit" value="Add">
+                </form>
+            </div>
+            <a class="btn btn-success" href="{{ url('/admin/filterproducts?keyword=&brand=All&cat=All') }}">
+                <span class="align-middle">All products</span>
+            </a>
         </div>
-        <div class="my-5">
+        <div>
+            
+
+
             <form action="{{ url('/admin/addproduct') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label class="h4 form-label">Product Name:</label>
@@ -59,13 +76,19 @@
 
                 <label class="h4 form-label my-3">Product Sale Price (optinal) :</label>
                 <input class="form-control" type="number" name="sale_price" placeholder="Sale Price">
+                {{-- t01 --}}
+                <div class="boot">
 
-                <label class="h4 form-label my-3">Product Brand:</label>
-                <select class="form-control form-select" name="brand">
-                    @foreach ($brands as $brand)
-                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                    @endforeach
-                </select>
+
+                    <label class="h4 form-label my-3">Product Brand:</label>
+                    <select class="form-control form-select" name="brand">
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+
+
+                </div>
 
                 <label class="h4 form-label my-3">Product Category:</label>
                 <select class="form-control form-select" name="category">
